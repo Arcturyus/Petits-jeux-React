@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 10px;
+  padding: 0;
+  background-color: rgb(247, 235, 218);
+  min-height: 100vh;
+}
+.back_to_game_button{
+  background: linear-gradient(45deg, #2196f3, #63b8ff, #4a90e2);
+  background-size: 200% 200%;
+  animation: gradientAnimation 3s ease infinite;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+      background: linear-gradient(65deg, #4a90e2, #63b8ff, #4a90e2);      
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+.title {
+  background: linear-gradient(45deg, #438de3, #0629b5);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 4rem;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin: 2rem 0;
+  transform: perspective(500px) rotateX(15deg);
+  font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.title:hover {
+  transform: perspective(500px) rotateX(15deg) scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+
+h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+h5 {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+h6 {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+code {
+  font-size: 1.2em;
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.game{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.game-board {
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(135deg, #f0f7ff, #e1f0ff, #cae3fd);
+}

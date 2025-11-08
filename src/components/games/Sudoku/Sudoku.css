@@ -1,0 +1,48 @@
+.sudoku-wrapper .square {
+  color: #2196f3;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  float: left;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  font-weight: bold;
+  line-height: 5px;
+  margin: 1px;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.sudoku-wrapper .title {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.sudoku-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.sudoku-menu button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(15deg, #4a90e2, #63b8ff, #4a90e2);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+.square.focused {
+    border: 2px solid #f665d2; /* Plus spécifique, gagne automatiquement */
+}
