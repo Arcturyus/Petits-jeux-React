@@ -6,7 +6,7 @@ export default function Home() {
 
   const navigate = useNavigate()
   return (
-    <div className="A">
+    <div className="home-page-games-grid">
         {/* Grille des jeux */}
             {games.map((game) => (
             <GameCard 

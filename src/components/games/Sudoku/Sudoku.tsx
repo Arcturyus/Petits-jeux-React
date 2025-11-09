@@ -89,7 +89,7 @@ export default function Sudoku() {
     return <div className='sudoku-wrapper'>
         <h1 className="title">Sudoku</h1>
         <div className="game">
-            <div className="game-board">
+            <div className="sudoku-game-board">
                 <Board 
                     squares={squares}
                     onCellChange={handleCellChange}

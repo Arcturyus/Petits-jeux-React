@@ -5,18 +5,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
 .card {
   padding: 2em;
@@ -43,7 +31,7 @@
   position: relative;
   overflow: hidden;
 }
-.morpion-wrapper .game-board {
+.morpion-wrapper .morpion-game-board {
     padding: 10px 20px 20px 20px;
 }
 
@@ -83,21 +71,21 @@
 }
 
 
-.game-info {
+.morpion-game-info {
   margin-right: 20px;
 }
 
-.ol-history {
+.morpion-ol-history {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.ol-history li {
+.morpion-ol-history li {
   margin-bottom: 2px;
 }
 
-.ol-history button {
+.morpion-ol-history button {
   background: #4a90e2;
   color: white;
   border: none;
@@ -110,10 +98,26 @@
   text-align: center;
 }
 
-.ol-history button:hover {
+.morpion-ol-history button:hover {
   background: #357abd;
 }
 
-.ol-history button:active {
+.morpion-ol-history button:active {
   background: #19436a;
+}
+
+.morpion-game{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.morpion-game-board {
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(135deg, #f0f7ff, #e1f0ff, #dfefff);
 }

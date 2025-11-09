@@ -22,9 +22,9 @@ function GamePage({ game, onBack }: GamePageProps) {
         )
       default:
         return (
-          <div className="text-center p-8">
-            <div className="text-4xl mb-4">🚧</div>
-            <p className="text-gray-600">Ce jeu n'est pas encore implémenté</p>
+          <div>
+            <div>🚧</div>
+            <p>Ce jeu n'est pas encore implémenté</p>
           </div>
         )
     }

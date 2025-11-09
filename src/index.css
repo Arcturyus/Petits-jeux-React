@@ -85,9 +85,6 @@ h6 {
   font-size: 12px;
 }
 
-code {
-  font-size: 1.2em;
-}
 
 ul {
   padding-inline-start: 20px;
@@ -97,19 +94,8 @@ ul {
   box-sizing: border-box;
 }
 
-
-.game{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.game-board {
-  border: 2px solid #4a90e2;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: fit-content;
-  height: fit-content;
-  background: linear-gradient(135deg, #f0f7ff, #e1f0ff, #cae3fd);
+.home-page-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }

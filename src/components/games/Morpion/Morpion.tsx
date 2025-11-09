@@ -91,10 +91,10 @@ export default function Game() {
   return (
     <div className='morpion-wrapper'>
     <h1 className="title">Morpion</h1>
-    <div className="game">
+    <div className="morpion-game">
      
-      <div className="game-info">
-        <ol className="ol-history">
+      <div className="morpion-game-info">
+        <ol className="morpion-ol-history">
           {history.map((currentSquares, move) => {
             const desc = move ? 'Coup n°' + move : 'Recommencer';
             return (
@@ -111,7 +111,7 @@ export default function Game() {
         </ol>
       </div>
 
-       <div className="game-board">
+       <div className="morpion-game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
     </div>

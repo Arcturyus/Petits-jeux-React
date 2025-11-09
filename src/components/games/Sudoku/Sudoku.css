@@ -46,3 +46,13 @@
 .square.focused {
     border: 2px solid #f665d2; /* Plus spécifique, gagne automatiquement */
 }
+
+.sudoku-game-board {
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(135deg, #f0f7ff, #e1f0ff, #dfefff);
+}
