@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
   padding: 30px;
-  background: linear-gradient(135deg, #fffffd 0%, #fffbec 50%, #faebd7 100%);
+  background: linear-gradient(135deg, #fffffd 0%, #fffbec 50%, #fff2e3 100%);
   border: 2px solid transparent;
   border-radius: 20px;
   cursor: pointer;
@@ -51,7 +51,7 @@
 }
 
 .game-card-button {
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f8a9b8 100%);
   color: white;
   padding: 12px 24px;
   border-radius: 25px;

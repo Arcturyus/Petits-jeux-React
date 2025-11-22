@@ -4,7 +4,7 @@ export const games: Game[] = [
   {
     id: 'morpion',
     title: 'Morpion',
-    description: 'Mets des gros X, ton pote mettras des gros O. ',
+    description: "L'un aligne des X, l'autre des O...", 
     icon: '✖️'
   },
   {
@@ -16,7 +16,7 @@ export const games: Game[] = [
   {
     id: 'chess',
     title: 'Échecs',
-    description: "Balance tes subordonnés comme un vrai roi",
+    description: "Tout le monde protège un roi qui fait rien...",
     icon: '♟️'
   }
 ]

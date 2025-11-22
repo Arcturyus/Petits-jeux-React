@@ -88,7 +88,7 @@ export default function Sudoku() {
 
     return <div className='sudoku-wrapper'>
         <h1 className="title">Sudoku</h1>
-        <div className="game">
+        <div className="sudoku-game">
             <div className="sudoku-game-board">
                 <Board 
                     squares={squares}

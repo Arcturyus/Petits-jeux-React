@@ -7,6 +7,8 @@ export default function Menu({ emptyGrid, onNewGame, onSolve }: {
 })
  {
     return <div className='sudoku-menu'>
+
+            <button> Coup précédent (pas fait)</button>
             <button onClick={emptyGrid}>Vider la grille</button>
             <button onClick={onNewGame}>Créer une nouvelle grille</button>
             <button onClick={onSolve}>Résoudre la grille</button>
