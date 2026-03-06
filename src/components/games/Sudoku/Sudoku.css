@@ -47,6 +47,18 @@
     border: 2px solid #f665d2; /* Plus spécifique, gagne automatiquement */
 }
 
+.square.block-sep-right {
+    margin-right: 6px;
+}
+
+.square.block-sep-bottom {
+    margin-bottom: 6px;
+}
+
+.square.block-alt {
+    background: linear-gradient(135deg, #ddeeff, #c8e0ff);
+}
+
 .sudoku-game-board {
   border: 2px solid #4a90e2;
   border-radius: 8px;

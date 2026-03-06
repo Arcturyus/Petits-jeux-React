@@ -4,11 +4,19 @@ import Menu from './menu.tsx'
 import BacktrackingNoOpti from './backtracking.ts'
 import type { CellValue }  from '../../../types/sudoku_types.ts'
 
-function Cell({value, isFocused, onMouseDown}: {value: CellValue, isFocused: boolean, onMouseDown: () => void}) {
+function Cell({value, isFocused, onMouseDown, row, col}: {value: CellValue, isFocused: boolean, onMouseDown: () => void, row: number, col: number}) {
+    const classes = [
+        'square',
+        isFocused ? 'focused' : '',
+        col % 3 === 2 && col !== 8 ? 'block-sep-right' : '',
+        row % 3 === 2 && row !== 8 ? 'block-sep-bottom' : '',
+        (Math.floor(row / 3) + Math.floor(col / 3)) % 2 === 1 ? 'block-alt' : '',
+    ].filter(Boolean).join(' ');
+
     return (
-        <button  
+        <button
       onMouseDown={onMouseDown}
-      className={`${isFocused ? 'focused' : ''} square`}
+      className={classes}
     >
       {value}
     </button>
@@ -50,11 +58,13 @@ function Board({squares, onCellChange}: {squares: CellValue[][], onCellChange: (
             {squares.map((row, i) => (
                 <div key={i} className="board-row">
                     {row.map((value, j) => (
-                        <Cell 
+                        <Cell
                         key={j}
                         value={value}
                         isFocused={focusedCell?.i === i && focusedCell?.j === j}
                         onMouseDown={() => handleClick(i, j)}
+                        row={i}
+                        col={j}
 />
                     ))}
                 </div>
