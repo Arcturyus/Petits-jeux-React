@@ -4,6 +4,8 @@ import Menu from './menu.tsx'
 import BacktrackingNoOpti from './backtracking.ts'
 import type { CellValue } from '../../../types/sudoku_types.ts'
 
+type Snapshot = { squares: CellValue[][], fixedCells: boolean[][] }
+
 function Cell({
     value, isFocused, isFixed, onMouseDown, onWheel, row, col
 }: {
@@ -106,18 +108,30 @@ function Board({
     );
 }
 
-const makeEmptyGrid = () => Array(9).fill(null).map(() => Array(9).fill(null));
-const makeEmptyFixed = () => Array(9).fill(null).map(() => Array(9).fill(false));
+const makeEmptyGrid = (): CellValue[][] => Array(9).fill(null).map(() => Array(9).fill(null));
+const makeEmptyFixed = (): boolean[][] => Array(9).fill(null).map(() => Array(9).fill(false));
+
+const initialSnapshot: Snapshot = { squares: makeEmptyGrid(), fixedCells: makeEmptyFixed() };
 
 export default function Sudoku() {
-    const [squares, setSquares] = useState<CellValue[][]>(makeEmptyGrid());
-    const [fixedCells, setFixedCells] = useState<boolean[][]>(makeEmptyFixed());
+    const [history, setHistory] = useState<Snapshot[]>([initialSnapshot]);
+    const [historyIndex, setHistoryIndex] = useState(0);
+
+    const { squares, fixedCells } = history[historyIndex];
+
+    const pushSnapshot = (snapshot: Snapshot) => {
+        setHistory(prev => [...prev.slice(0, historyIndex + 1), snapshot]);
+        setHistoryIndex(i => i + 1);
+    };
+
+    const handleUndo = () => {
+        if (historyIndex > 0) setHistoryIndex(i => i - 1);
+    };
 
     const handleNewGame = () => {
         const full = makeEmptyGrid();
         BacktrackingNoOpti(full);
 
-        // Mélanger les 81 indices et en cacher 45
         const indices = Array.from({ length: 81 }, (_, k) => k);
         for (let k = indices.length - 1; k > 0; k--) {
             const r = Math.floor(Math.random() * (k + 1));
@@ -136,28 +150,48 @@ export default function Sudoku() {
             }
         }
 
-        setSquares(full);
-        setFixedCells(newFixed);
+        pushSnapshot({ squares: full, fixedCells: newFixed });
     };
 
-    const handleSolve = (grid: CellValue[][]) => {
-        const newSquares = grid.map(row => [...row]);
+    const handleSolve = () => {
+        const newSquares = squares.map(row => [...row]);
         BacktrackingNoOpti(newSquares);
-        setSquares(newSquares);
+        pushSnapshot({ squares: newSquares, fixedCells });
     };
 
     const handleCellChange = (i: number, j: number, value: CellValue) => {
         if (fixedCells[i][j]) return;
-        setSquares(prev => {
-            const next = prev.map(row => [...row]);
-            next[i][j] = value;
-            return next;
-        });
+        const newSquares = squares.map(row => [...row]);
+        newSquares[i][j] = value;
+        pushSnapshot({ squares: newSquares, fixedCells });
     };
 
     const handleEmptyGrid = () => {
-        setSquares(makeEmptyGrid());
-        setFixedCells(makeEmptyFixed());
+        pushSnapshot({ squares: makeEmptyGrid(), fixedCells: makeEmptyFixed() });
+    };
+
+    const handleSave = () => {
+        const data = JSON.stringify({ squares, fixedCells });
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'sudoku.json';
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
+    const handleLoad = (file: File) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const parsed = JSON.parse(e.target?.result as string) as Snapshot;
+                pushSnapshot({ squares: parsed.squares, fixedCells: parsed.fixedCells });
+            } catch {
+                alert('Fichier invalide');
+            }
+        };
+        reader.readAsText(file);
     };
 
     return (
@@ -174,7 +208,11 @@ export default function Sudoku() {
                 <Menu
                     emptyGrid={handleEmptyGrid}
                     onNewGame={handleNewGame}
-                    onSolve={() => handleSolve(squares)}
+                    onSolve={handleSolve}
+                    onUndo={handleUndo}
+                    canUndo={historyIndex > 0}
+                    onSave={handleSave}
+                    onLoad={handleLoad}
                 />
             </div>
         </div>
