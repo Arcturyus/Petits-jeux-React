@@ -44,7 +44,22 @@
   }
 
 .square.focused {
-    border: 2px solid #f665d2; /* Plus spécifique, gagne automatiquement */
+    border: 2px solid #f665d2;
+}
+
+.square.fixed {
+    color: #1a4a8a;
+    cursor: default;
+    font-weight: 900;
+}
+
+.square.fixed:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.board {
+    outline: none;
 }
 
 .square.block-sep-right {
